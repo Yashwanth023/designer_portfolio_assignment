@@ -1,5 +1,4 @@
 
-import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Expertise from "@/components/Expertise";
@@ -9,18 +8,13 @@ import Blog from "@/components/Blog";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import { useTheme } from "@/context/ThemeContext";
 
 const Index = () => {
-  useEffect(() => {
-    document.body.classList.add('bg-black');
-    
-    return () => {
-      document.body.classList.remove('bg-black');
-    };
-  }, []);
+  const { theme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-black text-white' : 'bg-white text-black'}`}>
       <Navbar />
       <Hero />
       <Expertise />

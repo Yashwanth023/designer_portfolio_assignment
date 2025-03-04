@@ -83,7 +83,16 @@ html {
 }
 
 body {
-  @apply bg-black text-white font-sans antialiased;
+  @apply font-sans antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+  @apply bg-black text-white;
+}
+
+body.light {
+  @apply bg-white text-black;
 }
 
 @layer components {
@@ -109,6 +118,10 @@ body {
     transition-all duration-300 bg-white/10 backdrop-blur-sm hover:bg-white/20 border 
     border-white/10 text-white;
   }
+
+  .light .btn-primary {
+    @apply bg-black/10 text-black hover:bg-black/20 border-black/10;
+  }
   
   .card-hover {
     @apply transition-all duration-300 hover:translate-y-[-5px];
@@ -126,9 +139,17 @@ body {
   .work-card {
     @apply bg-darkgray rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg;
   }
+
+  .light .work-card {
+    @apply bg-gray-100;
+  }
   
   .tag {
     @apply inline-flex items-center justify-center rounded-full px-2.5 py-0.5 text-xs 
     bg-white/10 text-white/80 mr-1;
+  }
+
+  .light .tag {
+    @apply bg-black/10 text-black/80;
   }
 }
